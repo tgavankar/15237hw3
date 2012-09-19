@@ -1,0 +1,32 @@
+/* 15-237: Building Cross Platform Mobile Web Apps
+ * Homework 3: Part 1 - Advanced HTML and CSS
+ *
+ * Name: Tanay Gavankar
+ * AndrewID: tgavanka
+ */
+ 
+ body { 
+	background: url('../images/linen_bg.png');
+	font-family: 'Oswald', sans-serif;
+}
+
+.container {
+	text-align: center;
+}
+
+.item-container {
+	background-color: #EEEEEE;
+	border: 1px solid #CCCCCC;
+}
+
+.shadow {
+	-moz-box-shadow: 0px 0px 6px #e2e2e2;
+	-webkit-box-shadow: 0px 0px 6px #e2e2e2;
+	box-shadow: 0px 0px 6px #e2e2e2;
+}
+
+/*.photo {
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 40px;
+}*/

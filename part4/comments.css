@@ -1,0 +1,55 @@
+#commentSection{
+    width: 30%;
+    margin: auto;
+    padding: 2em;
+    
+    background: #CCCCCC;
+    border: 1px solid #AAAAAA;
+    
+}
+
+#commentSection *{
+    width: 100%;
+    margin: auto;
+}
+
+#commentSection #header h2{
+    text-align: center;
+}
+
+#commentSection textarea{
+    border-radius: 5px;
+    border: 1px solid #777777;
+}
+
+#commentSection #submitButton{
+    display: block;
+    width: 5em;
+    text-align: center;
+}
+
+#comment{
+    width: 5em;
+    margin: auto;
+    background: #EEEEEE;
+}
+
+.commentRevealed .title{
+    height: 1.2em;
+    border-bottom: 1px solid #AAAAAA;
+}
+
+.commentHidden .title{
+    height: 1.2em;
+    border-bottom: 1px solid #AAAAAA;
+}
+
+.commentRevealed .title:hover{
+    background: #BBBBBB;
+}
+
+.commentHidden .title:hover{
+    background: #BBBBBB;
+}
+
+

@@ -1,0 +1,151 @@
+<!-- Taken from http://js1k.com/2011-dysentery/demo/901 -->
+<html>
+<body>
+		<canvas height="300" id="c"></canvas>
+		<script>
+			var b = document.body;
+			var c = document.getElementsByTagName('canvas')[0];
+			var a = c.getContext('2d');
+			document.body.clientWidth; // fix bug in webkit: http://qfox.nl/weblog/218
+		</script>
+		<script>
+// Puzzle Bobble Clone for JS1K by @veubeke and @UlrikeErdmann
+//
+// Controls:
+//  Left arrow - turn left
+//  Right arrow - turn right
+//  Up arrow - fire
+//
+// See games.23inch.de/bubble/ for (ugly) converter scripts
+
+// small character usage:
+//  shim vars:   abc
+//  local vars:      e   i klmno   s  v  y
+//  global vars:  b d fgh       p r tu w
+//  compression:          j      q      x z
+
+Mmin = Math.min;
+Mrand = Math.random;
+
+// moves made in a level
+// moves=0 - start new level
+moves = 0,
+// current level
+level = 30,
+
+// draws a bubble or background
+// params: int x, int color, int y, bool draw_segment
+draw = function(e,v,y,k) {
+  // steps: i=2 - border, i=1 - color, i=0 - light
+  ;for(i=3;i--;) {
+    with(a)
+      beginPath(fillStyle = '#'+'eeb228000'.substr(i<2?v*i:6,3)),
+      fill(e?arc(e,y,i?13+i:9,2.8+(i&&k?angle:0),i?k?6.6+angle:9:5,0):rect(0,+(moves>>3)*24,226,y))
+   }
+},
+
+// main
+setInterval(function(e,v,y,k) {
+  // clear
+  draw(0,0,c.height=300);
+
+  if(moves) {
+    ;if(fired) {
+      // update bubble position
+      bubbleX += Math.sin(angle),
+      bubbleX<54 && bubbleX>3 || (angle = -angle),
+      bubbleY -= Math.cos(angle),
+      y = bubbleY/6-+(moves>>3)|0,
+      oldP = gridP;
+
+      // check for collision with bubbles or ceiling
+      if(board[gridP=y*8+Mmin(7-y%2,-Mmin(0,y%2/2-bubbleX/7|0))]||bubbleY<4+(moves>>3)*6) {
+        // add bubble to board
+        board[oldP] = col;
+        // update moves
+        moves++;
+
+        // delete bubbles
+        // e=1: equal colored, e=0: disconnected
+        for(e=2;e--;) {
+          // init equivalence classes and their size
+          m = [n=[]];
+          for(i in board) {
+            v = i%8, y = i>>3,
+            n[m[i] = !e&&i<8&&board[i]?-1:+i] = 0;
+            /// check neighbours
+            for(k=3;k--;) {
+              o = [1,8-y%2,9-y%2][k];
+              if(board[i] && (o-1?y>0&&(y%2 || (o-9?v<7:v>0)):v>0) && (e?board[i-o]==board[i]:board[i-o])) {
+                s = m[i-o];
+                for(l in m)
+                  m[l]+Mmin(-s,-m[i]) || n[m[l]=Mmin(s,m[i])]++
+              }
+            }
+          }
+
+          // delete and count bubbles, check remaining colors
+          k = [l=0,0,0,0,0];
+          for(i in board)
+            board[i] && (
+              v = i%8, y = i>>3,
+              // check if bubble should be kept
+              (e?m[i]-m[oldP]||n[m[oldP]]<2:m[i]<0)
+               // add available color
+               ?k[board[i]] = ++l
+               // start animation for removed bubble
+               : anim.push([14*(1+v*2+y%2),board[i],14+(y+(moves>>3))*24]) && (board[i] = 0))
+        }
+
+        // finish game if board is clear or bottom has been reached
+        ;if(l && (y<11-+(moves>>3) || (level = 0)) || (moves = 0))
+          // delete bubble, select new color still on the board
+          for(;!k[col = Mrand(fired=angle=0)*4+1|0];);
+      }
+    }
+
+    // update pointer / bubble
+    fired || (
+      angle = Mmin(1.3,-Mmin(1.3,(keys[0]-keys[2])/13-angle)),
+      // init bubble, unit: px*4 (for smaller numbers)
+      bubbleX = 28, bubbleY = 70,
+      fired = keys[1]),
+
+    // draw bubble
+    draw(bubbleX*4,col,bubbleY*4,!fired);
+
+    // draw board
+    for(i in board)
+      v = i%8, y = i>>3,
+      board[i] && draw(14*(1+v*2+y%2),board[i],14+(y+(moves>>3))*24);
+
+    // draw falling bubbles
+    for(i in anim)
+      draw(anim[i][0],anim[i][1],anim[i][2]+=5)
+  }
+  // start new level
+  ;if(!moves && level) {
+    // bubbles to animate
+    anim = [],
+    // keys pressed, bubble position in the grid
+    keys = [0,0,gridP=0,moves=1],
+    // add two bubbles per level
+    level += 2;
+
+    // board
+    for(board=[i=88];i--;) {
+      board[i] = i<level && i%16-15 && (col = Mrand(fired=angle=0)*4+1|0)
+    }
+  }
+}, 20),
+
+// event handler
+document.onkeydown = document.onkeyup = function(e,v,y,k) {
+  (i=e.keyCode-37)>>2 || (keys[i] = e.type[5]&&1||(0))
+}
+		</script>
+	
+
+<script></script>
+</body>
+</html>
