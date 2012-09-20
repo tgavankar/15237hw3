@@ -8,6 +8,7 @@
  body { 
 	background: url('../images/linen_bg.png');
 	font-family: 'Oswald', sans-serif;
+	padding-top: 15px;
 }
 
 .container {
@@ -17,16 +18,94 @@
 .item-container {
 	background-color: #EEEEEE;
 	border: 1px solid #CCCCCC;
+	padding: 10px;
+	position: relative;
+	text-shadow: 0px 1px 0px #FFFFFF;
+}
+
+.item-container:hover {
+	background-image: url('../images/dark_denim_bg.png');
+	cursor: pointer;
+	text-shadow: none;
+}
+
+.item-container:active {
+	top: 2px;
 }
 
 .shadow {
-	-moz-box-shadow: 0px 0px 6px #e2e2e2;
-	-webkit-box-shadow: 0px 0px 6px #e2e2e2;
-	box-shadow: 0px 0px 6px #e2e2e2;
+	-moz-box-shadow: 0px 0px 6px #bebebe;
+	-webkit-box-shadow: 0px 0px 6px #bebebe;
+	box-shadow: 0px 0px 6px #bebebe;
 }
 
-/*.photo {
-	padding-left: 20px;
-	padding-right: 20px;
-	padding-bottom: 40px;
-}*/
+.shadow:active {
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.innershadow {
+   -moz-box-shadow:    inset 0 0 6px #808080;
+   -webkit-box-shadow: inset 0 0 6px #808080;
+   box-shadow:         inset 0 0 6px #808080;
+}
+
+.photo {
+	background-image: linear-gradient(bottom, #BEBEBE 0%, #E9E9E9 100%);
+	background-image: -o-linear-gradient(bottom, #BEBEBE 0%, #E9E9E9 100%);
+	background-image: -moz-linear-gradient(bottom, #BEBEBE 0%, #E9E9E9 100%);
+	background-image: -webkit-linear-gradient(bottom, #BEBEBE 0%, #E9E9E9 100%);
+	background-image: -ms-linear-gradient(bottom, #BEBEBE 0%, #E9E9E9 100%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #BEBEBE),
+		color-stop(1, #E9E9E9)
+	);
+	
+	padding-bottom: 35px;
+}
+
+.floatright {
+	position: relative;
+}
+
+.logo {
+	height: 30px;
+	width: 30px;
+	background-image: url('../images/os_type_icons.png');
+	position: absolute;
+	right: 5px;
+}
+
+.android {
+	background-position: left;
+}
+
+.apple {
+	background-position: center;
+}
+
+.windows {
+	background-position: right;
+}
+
+.title {
+	text-align: left;
+	text-transform: uppercase;
+	padding-top: 3px;
+}
+
+.company {
+	color: #b4aaaa;
+	font-size: 12px;
+	padding-top: 7px;
+}
+
+.model {
+	color: #c90000;
+	font-size: 16px;
+}
