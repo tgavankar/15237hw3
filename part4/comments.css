@@ -52,4 +52,67 @@
     background: #BBBBBB;
 }
 
+.commentHidden .content {
+    height: 0em;
+    overflow: hidden;
+}
 
+.commentRevealed .content {
+    height: 4em;
+    display: block;
+    overflow: auto;
+}
+
+.content {
+    -webkit-transition: all 1s ease;  
+    -moz-transition: all 1s ease;  
+    transition:all 1s ease;
+}
+
+#party {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    background-color: red;
+    text-align: center;
+}
+
+@keyframes partyanim
+{
+    0% {background: white;}
+    12%  {background: red;}
+    25% {background: blue;}
+    37%  {background: orange;}
+    50% {background: purple;}
+    62% {background: green;}
+    75% {background: yellow;}
+    87% {background: black;}
+    100% {background: white;}
+}
+
+@-moz-keyframes partyanim /* Firefox */
+{
+    0% {background: white;}
+    12%  {background: red;}
+    25% {background: blue;}
+    37%  {background: orange;}
+    50% {background: purple;}
+    62% {background: green;}
+    75% {background: yellow;}
+    87% {background: black;}
+    100% {background: white;}
+}
+
+.flash {
+    animation-name: partyanim;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: 4;
+    animation-direction: alternate;
+    
+    -moz-animation-name: partyanim;
+    -moz-animation-duration: 5s; 
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: 4;
+    -moz-animation-direction: alternate;
+}
