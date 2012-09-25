@@ -19,7 +19,7 @@ function submitComment() {
     title.innerHTML = 'You said:';
     var content = document.createElement('div');
     content.className = 'content';
-    content.innerHTML = document.getElementById('commentInput').value;
+    content.appendChild(document.createTextNode(document.getElementById('commentInput').value));
     
     // Connect nodes to parent
     comment.appendChild(title);
