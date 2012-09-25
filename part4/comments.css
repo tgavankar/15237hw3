@@ -72,35 +72,63 @@
 #party {
     position: fixed;
     top: 0px;
-    right: 0px;
+    left: 0px;
     background-color: red;
     text-align: center;
 }
 
 @keyframes partyanim
 {
-    0% {background: white;}
+    0% {background: white;
+        transform: rotate(0deg);}
     12%  {background: red;}
-    25% {background: blue;}
+    25% {background: blue;
+         transform: rotate(90deg);}
     37%  {background: orange;}
-    50% {background: purple;}
+    50% {background: purple;
+         transform: rotate(180deg);}
     62% {background: green;}
-    75% {background: yellow;}
+    75% {background: yellow;
+         transform: rotate(270deg);}
     87% {background: black;}
-    100% {background: white;}
+    100% {background: white;
+         transform: rotate(360deg);}
 }
 
 @-moz-keyframes partyanim /* Firefox */
 {
-    0% {background: white;}
+    0% {background: white;
+        -moz-transform: rotate(0deg);}
     12%  {background: red;}
-    25% {background: blue;}
+    25% {background: blue;
+         -moz-transform: rotate(90deg);}
     37%  {background: orange;}
-    50% {background: purple;}
+    50% {background: purple;
+         -moz-transform: rotate(180deg);}
     62% {background: green;}
-    75% {background: yellow;}
+    75% {background: yellow;
+         -moz-transform: rotate(270deg);}
     87% {background: black;}
-    100% {background: white;}
+    100% {background: white;
+         -moz-transform: rotate(360deg);}
+}
+
+@-webkit-keyframes partyanim /* Webkit */
+{
+    0% {background: white;
+        -webkit-transform: rotate(0deg);}
+    12%  {background: red;}
+    25% {background: blue;
+         -webkit-transform: rotate(90deg);}
+    37%  {background: orange;}
+    50% {background: purple;
+         -webkit-transform: rotate(180deg);}
+    62% {background: green;}
+    75% {background: yellow;
+         -webkit-transform: rotate(270deg);}
+    87% {background: black;}
+    100% {background: white;
+         -webkit-transform: rotate(360deg);}
 }
 
 .flash {
@@ -115,4 +143,12 @@
     -moz-animation-timing-function: linear;
     -moz-animation-iteration-count: 4;
     -moz-animation-direction: alternate;
+    
+    -webkit-animation-name: partyanim;
+    -webkit-animation-duration: 5s; 
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: 4;
+    -webkit-animation-direction: alternate;
+    
+    overflow: hidden;
 }

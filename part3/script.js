@@ -1,4 +1,6 @@
-function init() {
+var geocoder;
+
+window.onload = function() {
     geocoder = new google.maps.Geocoder();
 }
 
